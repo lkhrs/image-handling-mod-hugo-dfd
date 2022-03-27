@@ -1,5 +1,5 @@
 {{/* Get the final image URL  */}}
-{{- $imageLink := partial "helpers/lib/image-handling/find-image-src" (dict "src" .Destination "page" .Page) -}}
+{{- $imageLink := partial "helpers/lib/image-handling/find-image-src" (dict "src" .Destination "page" .Page "getRelative" true) -}}
 
 {{/* Link the image to its URL and process it  */}}
 <a href="{{$imageLink.url}}">{{- partial "helpers/wrapped-image" (dict "alt" .Text "altRendered" true "title" .Title "image" (partial "helpers/lib/image-handling/find-image-src" (dict "src" .Destination "page" .Page "getRelative" true "ignoreBundleAssets" false)) "page" .Page "noImageWrapper" (not (.Page.Params.imageAddWrapper | default .Page.Site.Params.imageAddWrapper))) -}}</a>
